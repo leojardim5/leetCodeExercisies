@@ -5,13 +5,7 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        String[] paraTeste = divideString("abcdefghij", 3, 'k');
-
-        for (String string : paraTeste) {
-
-            System.out.println(string);
-
-        }
+        System.out.println(longestSubstring("abcabcd"));
 
     }
 
@@ -69,6 +63,30 @@ public class App {
         }
 
         return arrayToReturn;
+
+    }
+
+    public static int longestSubstring(String phrase) {
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        int maxSub = 0;
+
+        for (int right = 0, left = 0; right < phrase.length(); right++) {
+            char currentCharacter = phrase.charAt(right);
+
+            if (map.containsKey(currentCharacter) && map.get(currentCharacter) >= left) {
+
+                left = map.get(currentCharacter) + 1;
+
+            }
+
+            maxSub = Math.max(maxSub, right - left + 1);
+            map.put(currentCharacter, right);
+
+        }
+
+        return maxSub;
 
     }
 
