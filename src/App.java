@@ -1,11 +1,12 @@
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println(longestSubstring("abcabcd"));
+        System.out.println(longestSubstringSetWay("abcabcdcef"));
 
     }
 
@@ -66,7 +67,7 @@ public class App {
 
     }
 
-    public static int longestSubstring(String phrase) {
+    public static int longestSubstringMapWay(String phrase) {
 
         HashMap<Character, Integer> map = new HashMap<>();
 
@@ -83,6 +84,32 @@ public class App {
 
             maxSub = Math.max(maxSub, right - left + 1);
             map.put(currentCharacter, right);
+
+        }
+
+        return maxSub;
+
+    }
+
+    public static int longestSubstringSetWay(String phrase) {
+
+        int inicio = 0, maxSub = 0;
+
+        HashSet<Character> set = new HashSet<>();
+
+        for (int fim = 0; fim < phrase.length(); fim++) {
+
+            char currentCharacter = phrase.charAt(fim);
+
+            while (set.contains(currentCharacter)) {
+
+                set.remove(phrase.charAt(inicio));
+                inicio++;
+
+            }
+
+            set.add(currentCharacter);
+            maxSub = Math.max(maxSub, fim - inicio + 1);
 
         }
 
