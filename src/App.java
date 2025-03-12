@@ -1,12 +1,18 @@
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println(longestSubstringSetWay("abcabcdcef"));
+        for (String string : letterCombination("23")) {
+
+            System.out.println(string);
+
+        }
 
     }
 
@@ -117,4 +123,40 @@ public class App {
 
     }
 
+    public static List<String> letterCombination(String digits) {
+
+        List<String> result = new ArrayList<>();
+
+        HashMap<Character, String> map = new HashMap<>();
+
+        map.put('2', "abc");
+        map.put('3', "def");
+        map.put('4', "ghi");
+        map.put('5', "jkl");
+        map.put('6', "mno");
+        map.put('7', "pqrs");
+        map.put('8', "tuv");
+        map.put('9', "wxyz");
+
+        letterCombination(result, digits, "", 0, map);
+        return result;
+
+    }
+
+    public static void letterCombination(List<String> result, String digits, String current, int index, HashMap<Character, String> map) {
+
+        if (index == digits.length()) {
+            result.add(current);
+            return;
+        }
+
+        String letters = map.get(digits.charAt(index));
+
+        for (int i = 0; i < letters.length(); i++) {
+
+            letterCombination(result, digits, current + letters.charAt(i), index + 1, map);
+
+        }
+
+    }
 }
