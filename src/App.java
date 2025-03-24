@@ -5,12 +5,20 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
 
-        System.out.println(frequenciaDeCaracteres("aavvvsbb"));
+        // System.out.println(frequenciaDeCaracteres("aavvvsbb"));
+        String[] palavras = {"ola", "puta", "amigo", "caca"};
+
+        for (String string : letrasRepetidas(palavras)) {
+
+            System.out.println(string);
+
+        }
 
     }
 
@@ -186,6 +194,31 @@ public class App {
         }
 
         return map;
+
+    }
+
+    public static List<String> letrasRepetidas(String[] palavras) {
+
+        List<String> lista = new ArrayList<>();
+
+        for (String palavra : palavras) {
+            Set<Character> set = new HashSet<Character>();
+            boolean eRepetido = false;
+            for (int i = 0; i < palavra.length(); i++) {
+
+                if (!set.add(palavra.charAt(i))) {
+                    eRepetido = true;
+                }
+
+            }
+
+            if (!eRepetido) {
+                lista.add(palavra);
+            }
+
+        }
+
+        return lista;
 
     }
 
