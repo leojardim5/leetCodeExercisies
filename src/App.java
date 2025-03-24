@@ -8,12 +8,6 @@ public class App {
 
     public static void main(String[] args) throws Exception {
 
-        for (String string : letterCombination("23")) {
-
-            System.out.println(string);
-
-        }
-
     }
 
     public static int[] twoSum(int[] array, int target) {
@@ -159,4 +153,11 @@ public class App {
         }
 
     }
+
+    public static List<List<String>> groupAnagrams(String words) {
+
+        Map<String, List<String>> map = new HashMap<>();
+
+    }
+
 }
