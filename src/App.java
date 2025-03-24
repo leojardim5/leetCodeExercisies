@@ -1,12 +1,16 @@
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 public class App {
 
     public static void main(String[] args) throws Exception {
+
+        System.out.println(frequenciaDeCaracteres("aavvvsbb"));
 
     }
 
@@ -154,9 +158,34 @@ public class App {
 
     }
 
-    public static List<List<String>> groupAnagrams(String words) {
+    public static List<List<String>> groupAnagrams(String[] words) {
 
         Map<String, List<String>> map = new HashMap<>();
+
+        for (String str : words) {
+
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+            String sorted = new String(chars);
+
+            map.computeIfAbsent(sorted, k -> new ArrayList<>()).add(str);
+        }
+
+        return new ArrayList<>(map.values());
+
+    }
+
+    public static Map<Character, Integer> frequenciaDeCaracteres(String frase) {
+
+        Map<Character, Integer> map = new HashMap<>();
+
+        for (int i = 0; i < frase.length(); i++) {
+
+            map.put(frase.charAt(i), map.getOrDefault(frase.charAt(i), 0) + 1);
+
+        }
+
+        return map;
 
     }
 
