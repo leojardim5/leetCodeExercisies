@@ -12,14 +12,11 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // System.out.println(frequenciaDeCaracteres("aavvvsbb"));
-        String[] palavras = {"ola", "puta", "amigo", "caca"};
-
-        for (String string : letrasRepetidas(palavras)) {
-
-            System.out.println(string);
-
-        }
-
+        // String[] palavras = {"ola", "puta", "amigo", "caca"};
+        // for (String string : letrasRepetidas(palavras)) {
+        //     System.out.println(string);
+        // }
+        ListaLigada lista = new ListaLigada();
     }
 
     public static int[] twoSum(int[] array, int target) {
